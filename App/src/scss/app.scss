@@ -58,34 +58,7 @@ header {
     }
 }
 
-/* Simple show/hide */
-// .panel {
-//     .panel-body {
-//         display: none;
-//     }
-//     &.is-expanded {
-//         .panel-body {
-//             display: block;
-//         }
-//     }
-// }
-
-/* Simple CSS transition of max-height */
-// .panel {
-//     .panel-collapse {
-//         max-height: 0;
-//         overflow: hidden;
-//         -webkit-transition: max-height 0.5s cubic-bezier(.525,.66,.495,1.4);
-//         transition: max-height 0.5s cubic-bezier(.525,.66,.495,1.4);
-//     }
-//     &.is-expanded {
-//         .panel-collapse {
-//             max-height: 200px
-//         }
-//     }
-// }
-
-/* JS calculated height - the most accurate */
+/* JS calculated height */
 .panel {
     .panel-heading {
         cursor: pointer;
@@ -99,4 +72,51 @@ header {
         border: none !important;
     }
     h2 {margin-top: 5px !important;}
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+  .icon {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: red no-repeat 0 0;
+    background-size: 248px 248px;
+  }
+}
+.is-loading {
+  .loader {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity 0.3s linear, visibility 0.3s linear;
+    transition: opacity 0.3s linear, visibility 0.3s linear;
+    z-index: 3;
+    .icon {
+      -webkit-animation: spin 500ms infinite linear;
+              animation: spin 500ms infinite linear;
+    }
+  }
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0); transform: rotate(0); -webkit-transform-origin: center center; transform-origin: center center;}
+  0% { -webkit-transform: rotate(360deg); transform: rotate(360deg); -webkit-transform-origin: center center; transform-origin: center center;}
+}
+
+@keyframes spin {
+  0% { -webkit-transform: rotate(0); transform: rotate(0); -webkit-transform-origin: center center; transform-origin: center center;}
+  0% { -webkit-transform: rotate(360deg); transform: rotate(360deg); -webkit-transform-origin: center center; transform-origin: center center;}
 }
